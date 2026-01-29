@@ -1,12 +1,12 @@
 # GitHub Actions Workflow - Daily C-arm Market Intelligence Report
-# Runs automatically at 8 AM EST every day
+# Runs automatically at 9:30 AM IST every day
 
 name: Daily C-arm Intelligence Report
 
 on:
-  # Run daily at 8:00 AM EST (13:00 UTC)
+  # Run daily at 9:30 AM IST (04:00 UTC)
   schedule:
-    - cron: '0 13 * * *'
+    - cron: '0 4 * * *'
   
   # Allow manual trigger from GitHub Actions tab
   workflow_dispatch:

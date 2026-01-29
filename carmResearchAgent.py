@@ -11,6 +11,44 @@ from utils import WebSearchClient, EmailSender, setupLogger
 from agents import ResearchAgent, FactCheckAgent, ReportWriterAgent, HTMLEditorAgent
 
 
+def formatArticleDate(dateStr: str) -> str:
+    """
+    Convert ISO 8601 date format to readable format.
+    
+    Args:
+        dateStr: Date string like '2026-01-23T17:55:00+00:00'
+    
+    Returns:
+        Formatted string like 'Jan 23, 2026 - 5:55 PM'
+    """
+    if not dateStr or dateStr == 'Date not available':
+        return 'Date not available'
+    
+    try:
+        # Try parsing ISO 8601 format
+        if 'T' in dateStr:
+            # Handle timezone offset
+            if '+' in dateStr:
+                dateStr = dateStr.rsplit('+', 1)[0]
+            elif dateStr.endswith('Z'):
+                dateStr = dateStr[:-1]
+            
+            dt = datetime.fromisoformat(dateStr)
+            return dt.strftime("%b %d, %Y - %I:%M %p")
+        else:
+            # Try other common formats
+            for fmt in ["%Y-%m-%d", "%d/%m/%Y", "%m/%d/%Y"]:
+                try:
+                    dt = datetime.strptime(dateStr, fmt)
+                    return dt.strftime("%b %d, %Y")
+                except ValueError:
+                    continue
+            # Return as-is if no format matches
+            return dateStr
+    except Exception:
+        return dateStr
+
+
 class CarmResearchOrchestrator:
     """Main orchestrator for the multi-agent research pipeline."""
     
@@ -148,12 +186,16 @@ class CarmResearchOrchestrator:
         for category, articles in rawArticles.items():
             displayName = categoryNames.get(category, category)
             for article in articles[:15]:
+                # Extract and format date
+                rawDate = article.get('date', '')
+                articleDate = formatArticleDate(rawDate) if rawDate else 'Date not available'
+                
                 allArticles.append(f"""
 Category: {displayName}
 Title: {article.get('title', 'No title')}
 Source: {article.get('source', 'Unknown')}
-Date: {article.get('date', 'Recent')}
-Content: {article.get('snippet', '')}
+Publication Date: {articleDate}
+Content Preview: {article.get('snippet', '')}
 URL: {article.get('link', '')}
 ---""")
 
@@ -163,29 +205,39 @@ URL: {article.get('link', '')}
 
 CRITICAL RULES:
 1. Report EVERY article - each one is important news
-2. For EACH article, include: Title, Date, 2-3 sentence summary, Source, URL
+2. For EACH article, you MUST include ALL of these elements:
+   - Title (bold)
+   - Publication Date (from the article's date field - ALWAYS include this)
+   - Summary (2-3 sentences based on the content preview, explaining key points and relevance)
+   - Source name
+   - Full clickable URL
 3. Group by category (Mobile C-arm, Orthopedic, Vascular)
-4. Write concise but informative summaries based on the content provided"""
+4. Write concise but informative summaries based on the content provided
+5. NEVER skip the date or summary for any article"""
 
         prompt = f"""Create a detailed news brief for {today} from these {len(allArticles)} articles:
 
 {articlesText}
 
-FORMAT FOR EACH ARTICLE:
-**[Title]**
-Date: [Article date]
-Summary: [2-3 sentences explaining what the article is about, key points, and why it matters]
-Source: [Source name]
-URL: [Full URL]
+FORMAT FOR EACH ARTICLE (MANDATORY - follow exactly):
+**[Article Title]**  
+📅 Published: [Publication Date from the article]  
+📝 Summary: [2-3 sentences explaining what the article is about, the key developments, companies involved, and why it matters to MedTech executives]  
+🔗 Source: [Source name]  
+🌐 URL: [Full URL]
 
 REPORT STRUCTURE:
 1. EXECUTIVE SUMMARY - 3 bullet points of the most important stories
-2. MOBILE C-ARM IMAGING - All related articles with full details
-3. ORTHOPEDIC SURGERY - All related articles with full details
-4. VASCULAR SURGERY - All related articles with full details
+2. MOBILE C-ARM IMAGING - All related articles with FULL details (date, summary, source, URL)
+3. ORTHOPEDIC SURGERY - All related articles with FULL details (date, summary, source, URL)
+4. VASCULAR SURGERY - All related articles with FULL details (date, summary, source, URL)
 5. MARKET WATCH - Key market trends and insights
 
-IMPORTANT: Include the article date and a meaningful 2-3 sentence summary for EVERY article."""
+CRITICAL: Every single article MUST have:
+- The publication date (use the date provided, or "Date not available" if missing)
+- A meaningful 2-3 sentence summary explaining the news content
+- Source attribution
+- Full URL link"""
 
         try:
             report = self.researchAgent.generate(prompt, systemPrompt)
@@ -243,13 +295,15 @@ IMPORTANT: Include the article date and a meaningful 2-3 sentence summary for EV
                 source = article.get("source", "Unknown")
                 snippet = article.get("snippet", "")[:200]
                 link = article.get("link", "")
+                rawDate = article.get("date", "")
+                articleDate = formatArticleDate(rawDate) if rawDate else "Date not available"
                 
                 report += f"**{i}. {title}**\n"
-                report += f"   - Source: {source}\n"
-                if snippet:
-                    report += f"   - {snippet}...\n"
+                report += f"   - 📅 Date: {articleDate}\n"
+                report += f"   - 📝 Summary: {snippet}...\n" if snippet else ""
+                report += f"   - 🔗 Source: {source}\n"
                 if link:
-                    report += f"   - [Link]({link})\n"
+                    report += f"   - 🌐 URL: [{source}]({link})\n"
                 report += "\n"
             
             report += "---\n\n"
@@ -303,13 +357,16 @@ IMPORTANT: Include the article date and a meaningful 2-3 sentence summary for EV
                     source = htmlModule.escape(article.get("source", "Unknown"))
                     snippet = htmlModule.escape(article.get("snippet", "")[:200])
                     link = article.get("link", "")
+                    rawDate = article.get("date", "")
+                    articleDate = htmlModule.escape(formatArticleDate(rawDate) if rawDate else "Date not available")
                     
                     articlesHtml += f'''
                     <div style="margin-bottom: 15px; padding: 12px; background: #f9f9f9; border-radius: 6px; border-left: 3px solid #1a5f7a;">
                         <strong style="color: #1a5f7a;">{i}. {title}</strong><br>
-                        <span style="font-size: 12px; color: #666;">{source}</span><br>
-                        <p style="margin: 8px 0; font-size: 13px; color: #444;">{snippet}...</p>
-                        {f'<a href="{link}" style="color: #1a5f7a; font-size: 12px;">Read more</a>' if link else ''}
+                        <span style="font-size: 11px; color: #888;">📅 {articleDate}</span><br>
+                        <span style="font-size: 12px; color: #666;">🔗 {source}</span><br>
+                        <p style="margin: 8px 0; font-size: 13px; color: #444;">📝 {snippet}...</p>
+                        {f'<a href="{link}" style="color: #1a5f7a; font-size: 12px;">🌐 Read full article</a>' if link else ''}
                     </div>'''
             
             sectionsHtml += f'''

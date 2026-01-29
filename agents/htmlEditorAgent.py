@@ -31,6 +31,9 @@ Your HTML must be:
 - Uses inline CSS (no external stylesheets)
 - Uses tables for layout (email compatibility)
 - Accessible with good contrast ratios
+- NEVER use markdown syntax (**, *, [text](url)) - always use proper HTML tags
+- Article titles should use <strong> tags for bold
+- URLs should be direct <a href="url">descriptive text</a> links, NOT [Link](url) format
 
 Design guidelines:
 - Color scheme: Professional blues and grays
@@ -89,6 +92,13 @@ Requirements:
 8. Ensure bullet points are properly formatted
 9. Add appropriate padding and margins for readability
 
+CRITICAL FORMATTING RULES:
+- Article titles must use <strong> tags for bold text, NOT markdown **asterisks**
+- URLs must be direct clickable links using <a href="URL">Source Name</a> or <a href="URL">Read Article</a>
+- Do NOT use [Link](url) markdown format - convert all to proper HTML anchor tags
+- Each article should be in a card-style div with: title (bold), date, summary paragraph, and clickable source link
+- Remove any markdown syntax like **, *, or [text](url) and replace with proper HTML
+
 Return ONLY the complete HTML code, starting with <!DOCTYPE html>"""
 
         try:
@@ -110,6 +120,8 @@ Return ONLY the complete HTML code, starting with <!DOCTYPE html>"""
         Returns:
             Cleaned HTML string.
         """
+        import re
+        
         if "```html" in htmlContent:
             htmlContent = htmlContent.split("```html")[1]
         if "```" in htmlContent:
@@ -123,6 +135,20 @@ Return ONLY the complete HTML code, starting with <!DOCTYPE html>"""
                 htmlContent = htmlContent[doctypePos:]
             elif htmlContent.lower().startswith("<html"):
                 htmlContent = "<!DOCTYPE html>\n" + htmlContent
+
+        # Clean up any remaining markdown syntax
+        # Convert **text** to <strong>text</strong>
+        htmlContent = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', htmlContent)
+        
+        # Convert [Link](url) or [text](url) to proper HTML links
+        htmlContent = re.sub(
+            r'\[([^\]]+)\]\(([^)]+)\)',
+            r'<a href="\2" style="color: #1a5f7a;">\1</a>',
+            htmlContent
+        )
+        
+        # Remove any remaining literal [Link] text followed by URLs
+        htmlContent = re.sub(r'\[Link\]\s*', '', htmlContent)
 
         return htmlContent
 
