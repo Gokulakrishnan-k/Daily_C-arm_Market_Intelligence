@@ -67,7 +67,7 @@ class Config:
     timezone: str = "America/New_York"
     
     temperature: float = 0.3
-    maxTokens: int = 4000
+    maxTokens: int = 10000
     
     logLevel: str = "INFO"
     logFile: str = "carmResearchAgent.log"
