@@ -1,0 +1,234 @@
+2026-01-29 21:41:03 - carmResearchAgent - INFO - AI Backend: GitHub Models (gpt-4o-mini)
+2026-01-29 21:41:03 - carmResearchAgent - INFO - AI agents initialized
+2026-01-29 21:41:03 - carmResearchAgent - WARNING - Email not configured
+2026-01-29 21:41:03 - carmResearchAgent - INFO - ============================================================
+2026-01-29 21:41:03 - carmResearchAgent - INFO - Starting C-arm Research Agent Pipeline
+2026-01-29 21:41:03 - carmResearchAgent - INFO - ============================================================
+2026-01-29 21:41:03 - carmResearchAgent - INFO - 
+[STAGE 1] Gathering news...
+2026-01-29 21:42:11 - carmResearchAgent - INFO - Found 82 articles
+2026-01-29 21:42:11 - carmResearchAgent - INFO - 
+[STAGE 2] Analyzing articles...
+2026-01-29 21:42:35 - carmResearchAgent - INFO - 
+[STAGE 3] Verifying findings...
+2026-01-29 21:43:13 - carmResearchAgent - INFO - 
+[STAGE 4] Creating report...
+2026-01-29 21:43:23 - carmResearchAgent - INFO - 
+[STAGE 5] Formatting HTML...
+2026-01-29 21:43:50 - carmResearchAgent - INFO - Text report saved: output\report_20260129_214350.md
+2026-01-29 21:43:50 - carmResearchAgent - INFO - HTML report saved: output\report_20260129_214350.html
+2026-01-29 21:43:50 - carmResearchAgent - INFO - 
+[STAGE 6] Skipped (email not configured)
+2026-01-29 21:43:50 - carmResearchAgent - INFO - 
+============================================================
+2026-01-29 21:43:50 - carmResearchAgent - INFO - [SUCCESS] Pipeline completed
+2026-01-29 21:43:50 - carmResearchAgent - INFO - ============================================================
+2026-01-29 21:48:37 - carmResearchAgent - INFO - AI Backend: GitHub Models (gpt-4o-mini)
+2026-01-29 21:48:37 - carmResearchAgent - INFO - AI agents initialized
+2026-01-29 21:48:37 - carmResearchAgent - WARNING - Email not configured
+2026-01-29 21:48:37 - carmResearchAgent - INFO - ============================================================
+2026-01-29 21:48:37 - carmResearchAgent - INFO - Starting C-arm Research Agent Pipeline
+2026-01-29 21:48:37 - carmResearchAgent - INFO - ============================================================
+2026-01-29 21:48:37 - carmResearchAgent - INFO - 
+[STAGE 1] Gathering news...
+2026-01-29 21:49:29 - carmResearchAgent - INFO - Found 65 articles
+2026-01-29 21:49:29 - carmResearchAgent - INFO - 
+[STAGE 2] Analyzing articles...
+2026-01-29 21:49:51 - carmResearchAgent - INFO - 
+[STAGE 3] Verifying findings...
+2026-01-29 21:50:16 - carmResearchAgent - INFO - 
+[STAGE 4] Creating report...
+2026-01-29 21:50:26 - carmResearchAgent - INFO - 
+[STAGE 5] Formatting HTML...
+2026-01-29 21:50:56 - carmResearchAgent - INFO - Text report saved: output\report_20260129_215056.md
+2026-01-29 21:50:56 - carmResearchAgent - INFO - HTML report saved: output\report_20260129_215056.html
+2026-01-29 21:50:56 - carmResearchAgent - INFO - 
+[STAGE 6] Skipped (email not configured)
+2026-01-29 21:50:56 - carmResearchAgent - INFO - 
+============================================================
+2026-01-29 21:50:56 - carmResearchAgent - INFO - [SUCCESS] Pipeline completed
+2026-01-29 21:50:56 - carmResearchAgent - INFO - ============================================================
+2026-01-29 21:52:51 - carmResearchAgent - INFO - AI Backend: GitHub Models (gpt-4o-mini)
+2026-01-29 21:52:51 - carmResearchAgent - INFO - AI agents initialized
+2026-01-29 21:52:51 - carmResearchAgent - WARNING - Email not configured
+2026-01-29 21:52:51 - carmResearchAgent - INFO - ============================================================
+2026-01-29 21:52:51 - carmResearchAgent - INFO - Starting C-arm Research Agent Pipeline
+2026-01-29 21:52:51 - carmResearchAgent - INFO - ============================================================
+2026-01-29 21:52:51 - carmResearchAgent - INFO - 
+[STAGE 1] Gathering news...
+2026-01-29 21:53:44 - carmResearchAgent - INFO - Found 70 articles
+2026-01-29 21:53:44 - carmResearchAgent - INFO - 
+[STAGE 2] Analyzing articles...
+2026-01-29 21:54:06 - carmResearchAgent - INFO - 
+[STAGE 3] Verifying findings...
+2026-01-29 21:54:09 - carmResearchAgent - INFO - 
+[STAGE 4] Creating report...
+2026-01-29 21:54:09 - carmResearchAgent - INFO - 
+[STAGE 5] Formatting HTML...
+2026-01-29 21:54:10 - carmResearchAgent - INFO - Text report saved: output\report_20260129_215410.md
+2026-01-29 21:54:10 - carmResearchAgent - INFO - HTML report saved: output\report_20260129_215410.html
+2026-01-29 21:54:10 - carmResearchAgent - INFO - 
+[STAGE 6] Skipped (email not configured)
+2026-01-29 21:54:10 - carmResearchAgent - INFO - 
+============================================================
+2026-01-29 21:54:10 - carmResearchAgent - INFO - [SUCCESS] Pipeline completed
+2026-01-29 21:54:10 - carmResearchAgent - INFO - ============================================================
+2026-01-29 21:55:20 - carmResearchAgent - INFO - AI Backend: GitHub Models (gpt-4o-mini)
+2026-01-29 21:55:20 - carmResearchAgent - INFO - AI agents initialized
+2026-01-29 21:55:20 - carmResearchAgent - WARNING - Email not configured
+2026-01-29 21:55:20 - carmResearchAgent - INFO - ============================================================
+2026-01-29 21:55:20 - carmResearchAgent - INFO - Starting C-arm Research Agent Pipeline
+2026-01-29 21:55:20 - carmResearchAgent - INFO - ============================================================
+2026-01-29 21:55:20 - carmResearchAgent - INFO - 
+[STAGE 1] Gathering news...
+2026-01-29 21:56:07 - carmResearchAgent - INFO - Found 70 articles
+2026-01-29 21:56:07 - carmResearchAgent - INFO - 
+[STAGE 2] Analyzing articles...
+2026-01-29 21:56:40 - carmResearchAgent - INFO - 
+[STAGE 3] Verifying findings...
+2026-01-29 21:57:11 - carmResearchAgent - INFO - 
+[STAGE 4] Creating report...
+2026-01-29 21:57:19 - carmResearchAgent - INFO - 
+[STAGE 5] Formatting HTML...
+2026-01-29 21:57:38 - carmResearchAgent - INFO - Text report saved: output\report_20260129_215738.md
+2026-01-29 21:57:38 - carmResearchAgent - INFO - HTML report saved: output\report_20260129_215738.html
+2026-01-29 21:57:38 - carmResearchAgent - INFO - 
+[STAGE 6] Skipped (email not configured)
+2026-01-29 21:57:38 - carmResearchAgent - INFO - 
+============================================================
+2026-01-29 21:57:38 - carmResearchAgent - INFO - [SUCCESS] Pipeline completed
+2026-01-29 21:57:38 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:00:19 - carmResearchAgent - INFO - AI Backend: GitHub Models (gpt-4o-mini)
+2026-01-29 22:00:19 - carmResearchAgent - INFO - AI agents initialized
+2026-01-29 22:00:19 - carmResearchAgent - WARNING - Email not configured
+2026-01-29 22:00:19 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:00:19 - carmResearchAgent - INFO - Starting C-arm Research Agent Pipeline
+2026-01-29 22:00:19 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:00:19 - carmResearchAgent - INFO - 
+[STAGE 1] Gathering news...
+2026-01-29 22:01:07 - carmResearchAgent - INFO - Found 71 articles
+2026-01-29 22:01:07 - carmResearchAgent - INFO - 
+[STAGE 2] Analyzing articles...
+2026-01-29 22:01:37 - carmResearchAgent - INFO - 
+[STAGE 3] Verifying findings...
+2026-01-29 22:02:23 - carmResearchAgent - INFO - 
+[STAGE 4] Creating report...
+2026-01-29 22:02:30 - carmResearchAgent - INFO - 
+[STAGE 5] Formatting HTML...
+2026-01-29 22:02:48 - carmResearchAgent - INFO - Text report saved: output\report_20260129_220248.md
+2026-01-29 22:02:48 - carmResearchAgent - INFO - HTML report saved: output\report_20260129_220248.html
+2026-01-29 22:02:48 - carmResearchAgent - INFO - 
+[STAGE 6] Skipped (email not configured)
+2026-01-29 22:02:48 - carmResearchAgent - INFO - 
+============================================================
+2026-01-29 22:02:48 - carmResearchAgent - INFO - [SUCCESS] Pipeline completed
+2026-01-29 22:02:48 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:05:47 - carmResearchAgent - INFO - AI Backend: GitHub Models (gpt-4o-mini)
+2026-01-29 22:05:47 - carmResearchAgent - INFO - AI agents initialized
+2026-01-29 22:05:47 - carmResearchAgent - WARNING - Email not configured
+2026-01-29 22:05:47 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:05:47 - carmResearchAgent - INFO - Starting C-arm Research Agent Pipeline
+2026-01-29 22:05:47 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:05:47 - carmResearchAgent - INFO - 
+[STAGE 1] Gathering news...
+2026-01-29 22:06:33 - carmResearchAgent - INFO - Found 66 articles
+2026-01-29 22:06:33 - carmResearchAgent - INFO - 
+[STAGE 2] Analyzing articles...
+2026-01-29 22:07:33 - carmResearchAgent - INFO - 
+[STAGE 3] Formatting HTML...
+2026-01-29 22:08:27 - carmResearchAgent - INFO - Text report saved: output\report_20260129_220827.md
+2026-01-29 22:08:27 - carmResearchAgent - INFO - HTML report saved: output\report_20260129_220827.html
+2026-01-29 22:08:27 - carmResearchAgent - INFO - 
+[STAGE 6] Skipped (email not configured)
+2026-01-29 22:08:27 - carmResearchAgent - INFO - 
+============================================================
+2026-01-29 22:08:27 - carmResearchAgent - INFO - [SUCCESS] Pipeline completed
+2026-01-29 22:08:27 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:15:07 - carmResearchAgent - INFO - AI Backend: GitHub Models (gpt-4o-mini)
+2026-01-29 22:15:07 - carmResearchAgent - INFO - AI agents initialized
+2026-01-29 22:15:07 - carmResearchAgent - WARNING - Email not configured
+2026-01-29 22:15:07 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:15:07 - carmResearchAgent - INFO - Starting C-arm Research Agent Pipeline
+2026-01-29 22:15:07 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:15:07 - carmResearchAgent - INFO - 
+[STAGE 1] Gathering news...
+2026-01-29 22:15:54 - carmResearchAgent - INFO - Found 70 articles
+2026-01-29 22:15:54 - carmResearchAgent - INFO - 
+[STAGE 2] Analyzing articles...
+2026-01-29 22:17:05 - carmResearchAgent - INFO - 
+[STAGE 3] Formatting HTML...
+2026-01-29 22:18:12 - carmResearchAgent - INFO - Text report saved: output\report_20260129_221812.md
+2026-01-29 22:18:12 - carmResearchAgent - INFO - HTML report saved: output\report_20260129_221812.html
+2026-01-29 22:18:12 - carmResearchAgent - INFO - 
+[STAGE 6] Skipped (email not configured)
+2026-01-29 22:18:12 - carmResearchAgent - INFO - 
+============================================================
+2026-01-29 22:18:12 - carmResearchAgent - INFO - [SUCCESS] Pipeline completed
+2026-01-29 22:18:12 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:32:15 - carmResearchAgent - INFO - Running in basic mode (no AI)
+2026-01-29 22:32:15 - carmResearchAgent - WARNING - Email not configured
+2026-01-29 22:32:15 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:32:15 - carmResearchAgent - INFO - Starting C-arm Research Agent Pipeline
+2026-01-29 22:32:15 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:32:15 - carmResearchAgent - INFO - 
+[STAGE 1] Gathering news...
+2026-01-29 22:32:15 - carmResearchAgent - ERROR - Pipeline failed: 'WebSearchClient' object has no attribute 'searchMultipleTopics'
+Traceback (most recent call last):
+  File "C:\Users\320268488\Downloads\C-arm_Research_Agent\Test1\carmResearchAgent.py", line 75, in runPipeline
+    rawArticles = self._gatherNews()
+                  ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\320268488\Downloads\C-arm_Research_Agent\Test1\carmResearchAgent.py", line 131, in _gatherNews
+    return self.webSearch.searchMultipleTopics(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'WebSearchClient' object has no attribute 'searchMultipleTopics'
+2026-01-29 22:32:26 - carmResearchAgent - INFO - Running in basic mode (no AI)
+2026-01-29 22:32:26 - carmResearchAgent - WARNING - Email not configured
+2026-01-29 22:32:26 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:32:26 - carmResearchAgent - INFO - Starting C-arm Research Agent Pipeline
+2026-01-29 22:32:26 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:32:26 - carmResearchAgent - INFO - 
+[STAGE 1] Gathering news...
+2026-01-29 22:32:26 - carmResearchAgent - ERROR - Pipeline failed: 'WebSearchClient' object has no attribute 'searchMultipleTopics'
+Traceback (most recent call last):
+  File "C:\Users\320268488\Downloads\C-arm_Research_Agent\Test1\carmResearchAgent.py", line 75, in runPipeline
+    rawArticles = self._gatherNews()
+                  ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\320268488\Downloads\C-arm_Research_Agent\Test1\carmResearchAgent.py", line 131, in _gatherNews
+    return self.webSearch.searchMultipleTopics(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'WebSearchClient' object has no attribute 'searchMultipleTopics'
+2026-01-29 22:33:51 - carmResearchAgent - INFO - Running in basic mode (no AI)
+2026-01-29 22:33:51 - carmResearchAgent - WARNING - Email not configured
+2026-01-29 22:33:51 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:33:51 - carmResearchAgent - INFO - Starting C-arm Research Agent Pipeline
+2026-01-29 22:33:51 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:33:51 - carmResearchAgent - INFO - 
+[STAGE 1] Gathering news...
+2026-01-29 22:34:22 - carmResearchAgent - INFO - Found 69 articles
+2026-01-29 22:34:22 - carmResearchAgent - INFO - 
+[BASIC MODE] Saving raw results...
+2026-01-29 22:34:22 - carmResearchAgent - INFO - Text report saved: output\report_20260129_223422.md
+2026-01-29 22:34:22 - carmResearchAgent - INFO - HTML report saved: output\report_20260129_223422.html
+2026-01-29 22:34:22 - carmResearchAgent - INFO - 
+[SUCCESS] Basic report saved
+2026-01-29 22:37:05 - carmResearchAgent - INFO - AI Backend: GitHub Models (gpt-4o-mini)
+2026-01-29 22:37:05 - carmResearchAgent - INFO - AI agents initialized
+2026-01-29 22:37:05 - carmResearchAgent - WARNING - Email not configured
+2026-01-29 22:37:05 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:37:05 - carmResearchAgent - INFO - Starting C-arm Research Agent Pipeline
+2026-01-29 22:37:05 - carmResearchAgent - INFO - ============================================================
+2026-01-29 22:37:05 - carmResearchAgent - INFO - 
+[STAGE 1] Gathering news...
+2026-01-29 22:37:36 - carmResearchAgent - INFO - Found 64 articles
+2026-01-29 22:37:36 - carmResearchAgent - INFO - 
+[STAGE 2] Analyzing articles...
+2026-01-29 22:38:58 - carmResearchAgent - INFO - 
+[STAGE 3] Formatting HTML...
+2026-01-29 22:40:01 - carmResearchAgent - INFO - Text report saved: output\report_20260129_224001.md
+2026-01-29 22:40:01 - carmResearchAgent - INFO - HTML report saved: output\report_20260129_224001.html
+2026-01-29 22:40:01 - carmResearchAgent - INFO - 
+[STAGE 6] Skipped (email not configured)
+2026-01-29 22:40:01 - carmResearchAgent - INFO - 
+============================================================
+2026-01-29 22:40:01 - carmResearchAgent - INFO - [SUCCESS] Pipeline completed
+2026-01-29 22:40:01 - carmResearchAgent - INFO - ============================================================
