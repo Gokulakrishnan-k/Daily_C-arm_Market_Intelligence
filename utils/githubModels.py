@@ -61,13 +61,18 @@ class GitHubModelsClient:
                     f"{self.BASE_URL}/chat/completions",
                     headers=self.headers,
                     json=payload,
-                    timeout=120
+                    timeout=300  # Increased to 5 minutes for large prompts
                 )
                 response.raise_for_status()
 
                 data = response.json()
                 return data["choices"][0]["message"]["content"]
 
+            except requests.exceptions.Timeout as e:
+                waitTime = self.baseDelay * (attempt + 1)
+                logger.warning(f"Request timed out. Retrying in {waitTime}s (attempt {attempt + 1}/{self.maxRetries})")
+                time.sleep(waitTime)
+                continue
             except requests.exceptions.HTTPError as e:
                 if response.status_code == 429:
                     waitTime = self.baseDelay * (attempt + 1) * 2
@@ -84,7 +89,7 @@ class GitHubModelsClient:
                 logger.error(f"Generation failed: {e}")
                 raise
 
-        raise RuntimeError(f"API rate limit exceeded after {self.maxRetries} retries")
+        raise RuntimeError(f"API request failed after {self.maxRetries} retries (timeout or rate limit)")
 
     def testConnection(self) -> bool:
         """Test if the API connection works."""

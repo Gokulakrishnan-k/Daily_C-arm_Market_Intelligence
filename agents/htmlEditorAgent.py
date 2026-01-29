@@ -99,6 +99,18 @@ CRITICAL FORMATTING RULES:
 - Each article should be in a card-style div with: title (bold), date, summary paragraph, and clickable source link
 - Remove any markdown syntax like **, *, or [text](url) and replace with proper HTML
 
+SPACING AND LAYOUT:
+- Add generous spacing between articles (margin-bottom: 25px minimum)
+- Add padding inside each article card (padding: 15px 20px)
+- Add line-height: 1.6 for better readability
+- Add margin-top: 10px between the date, summary, and link elements
+- Use clear visual separation between sections
+
+CONTENT RULES:
+- If any text ends with "..." or is truncated, write a COMPLETE sentence based on the context
+- NEVER leave sentences incomplete or ending with "..."
+- Summaries should be full, readable sentences
+
 Return ONLY the complete HTML code, starting with <!DOCTYPE html>"""
 
         try:

@@ -208,12 +208,13 @@ CRITICAL RULES:
 2. For EACH article, you MUST include ALL of these elements:
    - Title (bold)
    - Publication Date (from the article's date field - ALWAYS include this)
-   - Summary (2-3 sentences based on the content preview, explaining key points and relevance)
+   - Summary (2-3 COMPLETE sentences based on the content preview, explaining key points and relevance)
    - Source name
    - Full clickable URL
 3. Group by category (Mobile C-arm, Orthopedic, Vascular)
 4. Write concise but informative summaries based on the content provided
-5. NEVER skip the date or summary for any article"""
+5. NEVER skip the date or summary for any article
+6. NEVER truncate sentences or end with "..." - always write COMPLETE sentences"""
 
         prompt = f"""Create a detailed news brief for {today} from these {len(allArticles)} articles:
 
@@ -222,7 +223,7 @@ CRITICAL RULES:
 FORMAT FOR EACH ARTICLE (MANDATORY - follow exactly):
 **[Article Title]**  
 📅 Published: [Publication Date from the article]  
-📝 Summary: [2-3 sentences explaining what the article is about, the key developments, companies involved, and why it matters to MedTech executives]  
+📝 Summary: [2-3 COMPLETE sentences explaining what the article is about, the key developments, companies involved, and why it matters to MedTech executives. DO NOT end with "..." - complete the thought.]  
 🔗 Source: [Source name]  
 🌐 URL: [Full URL]
 
@@ -235,9 +236,11 @@ REPORT STRUCTURE:
 
 CRITICAL: Every single article MUST have:
 - The publication date (use the date provided, or "Date not available" if missing)
-- A meaningful 2-3 sentence summary explaining the news content
+- A meaningful 2-3 sentence summary explaining the news content (NEVER truncate with "...")
 - Source attribution
-- Full URL link"""
+- Full URL link
+
+IMPORTANT: Write COMPLETE sentences. Never leave text truncated or ending with "..." - if the content preview is incomplete, infer and complete the thought logically."""
 
         try:
             report = self.researchAgent.generate(prompt, systemPrompt)
@@ -293,14 +296,14 @@ CRITICAL: Every single article MUST have:
             for i, article in enumerate(relevantArticles[:10], 1):
                 title = article.get("title", "No title")
                 source = article.get("source", "Unknown")
-                snippet = article.get("snippet", "")[:200]
+                snippet = article.get("snippet", "")
                 link = article.get("link", "")
                 rawDate = article.get("date", "")
                 articleDate = formatArticleDate(rawDate) if rawDate else "Date not available"
                 
                 report += f"**{i}. {title}**\n"
                 report += f"   - 📅 Date: {articleDate}\n"
-                report += f"   - 📝 Summary: {snippet}...\n" if snippet else ""
+                report += f"   - 📝 Summary: {snippet}\n" if snippet else ""
                 report += f"   - 🔗 Source: {source}\n"
                 if link:
                     report += f"   - 🌐 URL: [{source}]({link})\n"
@@ -355,18 +358,18 @@ CRITICAL: Every single article MUST have:
                 for i, article in enumerate(relevantArticles[:10], 1):
                     title = htmlModule.escape(article.get("title", "No title"))
                     source = htmlModule.escape(article.get("source", "Unknown"))
-                    snippet = htmlModule.escape(article.get("snippet", "")[:200])
+                    snippet = htmlModule.escape(article.get("snippet", ""))
                     link = article.get("link", "")
                     rawDate = article.get("date", "")
                     articleDate = htmlModule.escape(formatArticleDate(rawDate) if rawDate else "Date not available")
                     
                     articlesHtml += f'''
-                    <div style="margin-bottom: 15px; padding: 12px; background: #f9f9f9; border-radius: 6px; border-left: 3px solid #1a5f7a;">
-                        <strong style="color: #1a5f7a;">{i}. {title}</strong><br>
-                        <span style="font-size: 11px; color: #888;">📅 {articleDate}</span><br>
-                        <span style="font-size: 12px; color: #666;">🔗 {source}</span><br>
-                        <p style="margin: 8px 0; font-size: 13px; color: #444;">📝 {snippet}...</p>
-                        {f'<a href="{link}" style="color: #1a5f7a; font-size: 12px;">🌐 Read full article</a>' if link else ''}
+                    <div style="margin-bottom: 25px; padding: 15px 20px; background: #f9f9f9; border-radius: 8px; border-left: 4px solid #1a5f7a; line-height: 1.6;">
+                        <strong style="color: #1a5f7a; font-size: 14px; display: block; margin-bottom: 8px;">{i}. {title}</strong>
+                        <div style="font-size: 12px; color: #888; margin-bottom: 6px;">📅 {articleDate}</div>
+                        <div style="font-size: 12px; color: #666; margin-bottom: 8px;">🔗 {source}</div>
+                        <p style="margin: 10px 0; font-size: 13px; color: #444; line-height: 1.5;">📝 {snippet}</p>
+                        {f'<a href="{link}" style="color: #1a5f7a; font-size: 12px; text-decoration: none; font-weight: bold;">🌐 Read full article →</a>' if link else ''}
                     </div>'''
             
             sectionsHtml += f'''
