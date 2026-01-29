@@ -1,0 +1,70 @@
+# GitHub Actions Workflow - Daily C-arm Market Intelligence Report
+# Runs automatically at 8 AM EST every day
+
+name: Daily C-arm Intelligence Report
+
+on:
+  # Run daily at 8:00 AM EST (13:00 UTC)
+  schedule:
+    - cron: '0 13 * * *'
+  
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+    inputs:
+      send_email:
+        description: 'Send email report'
+        required: false
+        default: 'true'
+        type: boolean
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10  # Allow up to 10 minutes for rate limit delays
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run C-arm Research Pipeline
+        env:
+          # GitHub Token for AI - 
+          GITHUB_TOKEN: ${{ secrets.GH_MODELS_TOKEN }}
+          GITHUB_MODEL: gpt-4o-mini
+          
+          GMAIL_SENDER_EMAIL: ${{ secrets.GMAIL_SENDER_EMAIL }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+        run: |
+          python carmResearchAgent.py --run
+      
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-report-${{ github.run_number }}
+          path: output/
+          retention-days: 30
+      
+      - name: Send report summary
+        if: success()
+        run: |
+          echo "## Daily Report Generated Successfully!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Date:** $(date +'%Y-%m-%d')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Generated Files:" >> $GITHUB_STEP_SUMMARY
+          ls -la output/ >> $GITHUB_STEP_SUMMARY 2>/dev/null || echo "No output files found" >> $GITHUB_STEP_SUMMARY
