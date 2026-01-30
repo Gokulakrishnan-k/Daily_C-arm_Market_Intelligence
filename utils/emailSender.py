@@ -4,7 +4,6 @@ import logging
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
-from typing import List, Union
 
 logger = logging.getLogger(__name__)
 
@@ -27,12 +26,12 @@ class EmailSender:
         self.smtpServer = smtpServer
         self.smtpPort = smtpPort
     
-    def sendHtmlEmail(self, recipientEmails: Union[str, List[str]], subject: str, htmlContent: str, plainText: str = None) -> bool:
+    def sendHtmlEmail(self, recipientEmail: str, subject: str, htmlContent: str, plainText: str = None) -> bool:
         """
-        Send an HTML email to one or multiple recipients (using BCC for privacy).
+        Send an HTML email.
         
         Args:
-            recipientEmails: Recipient's email address(es) - can be a string or list of strings
+            recipientEmail: Recipient's email address
             subject: Email subject
             htmlContent: HTML content of the email
             plainText: Plain text fallback (optional)
@@ -40,18 +39,11 @@ class EmailSender:
         Returns:
             True if sent successfully, False otherwise
         """
-        # Normalize to list
-        if isinstance(recipientEmails, str):
-            recipients = [recipientEmails]
-        else:
-            recipients = recipientEmails
-        
         try:
             message = MIMEMultipart("alternative")
             message["Subject"] = subject
             message["From"] = self.senderEmail
-            message["To"] = self.senderEmail 
-            message["Bcc"] = ", ".join(recipients)
+            message["To"] = recipientEmail
             
             if plainText:
                 textPart = MIMEText(plainText, "plain")
@@ -63,9 +55,9 @@ class EmailSender:
             with smtplib.SMTP(self.smtpServer, self.smtpPort) as server:
                 server.starttls()
                 server.login(self.senderEmail, self.senderPassword)
-                server.sendmail(self.senderEmail, recipients, message.as_string())
+                server.sendmail(self.senderEmail, recipientEmail, message.as_string())
             
-            logger.info(f"Email sent successfully (BCC) to {len(recipients)} recipient(s)")
+            logger.info(f"Email sent successfully to {recipientEmail}")
             return True
             
         except smtplib.SMTPAuthenticationError as e:
@@ -78,12 +70,12 @@ class EmailSender:
             logger.error(f"Failed to send email: {e}")
             return False
     
-    def sendReport(self, recipientEmails: Union[str, List[str]], htmlReport: str, subjectTemplate: str = "C-arm & Surgical Imaging Market Intelligence - {date}") -> bool:
+    def sendReport(self, recipientEmail: str, htmlReport: str, subjectTemplate: str = "C-arm & Surgical Imaging Market Intelligence - {date}") -> bool:
         """
-        Send the market intelligence report to one or multiple recipients.
+        Send the market intelligence report.
         
         Args:
-            recipientEmails: Recipient's email address(es) - can be a string or list of strings
+            recipientEmail: Recipient's email address
             htmlReport: HTML formatted report
             subjectTemplate: Subject line template with {date} placeholder
         
@@ -94,7 +86,7 @@ class EmailSender:
         plainText = self._htmlToPlainText(htmlReport)
         
         return self.sendHtmlEmail(
-            recipientEmails=recipientEmails,
+            recipientEmail=recipientEmail,
             subject=subject,
             htmlContent=htmlReport,
             plainText=plainText
