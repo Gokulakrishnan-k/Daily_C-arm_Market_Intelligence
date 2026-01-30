@@ -139,12 +139,12 @@ class CarmResearchOrchestrator:
             if self.emailSender:
                 self.logger.info("\n[STAGE 6] Sending email...")
                 emailSent = self.emailSender.sendReport(
-                    recipientEmail=self.config.email.recipientEmail,
+                    recipientEmails=self.config.email.recipientEmails,
                     htmlReport=htmlReport,
                     subjectTemplate=self.config.email.subjectTemplate
                 )
                 if emailSent:
-                    self.logger.info(f"Email sent to {self.config.email.recipientEmail}")
+                    self.logger.info(f"Email sent to {', '.join(self.config.email.recipientEmails)}")
             else:
                 self.logger.info("\n[STAGE 6] Skipped (email not configured)")
             

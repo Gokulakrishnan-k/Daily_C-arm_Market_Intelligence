@@ -47,7 +47,9 @@ class EmailConfig:
     
     senderEmail: str = field(default_factory=lambda: os.getenv("GMAIL_SENDER_EMAIL", ""))
     senderPassword: str = field(default_factory=lambda: os.getenv("GMAIL_APP_PASSWORD", ""))
-    recipientEmail: str = field(default_factory=lambda: os.getenv("RECIPIENT_EMAIL", ""))
+    recipientEmails: List[str] = field(default_factory=lambda: [
+        email.strip() for email in os.getenv("RECIPIENT_EMAILS", "").split(",") if email.strip()
+    ])
     smtpServer: str = "smtp.gmail.com"
     smtpPort: int = 587
     subjectTemplate: str = "C-arm & Surgical Imaging Market Intelligence - {date}"
@@ -86,7 +88,7 @@ class Config:
     
     def canSendEmail(self) -> bool:
         """Check if email sending is configured."""
-        return bool(self.email.senderEmail and self.email.senderPassword)
+        return bool(self.email.senderEmail and self.email.senderPassword and self.email.recipientEmails)
 
 
 config = Config()
